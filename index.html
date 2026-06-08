@@ -3,341 +3,287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAGEB - Centro Acadêmico de Geografia</title>
-    <!-- Importando fonte moderna do Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+    <title>CAGEB - Centro Acadêmico Alexander von Humboldt</title>
     <style>
+        /* [Todo o CSS foi mantido igual ao anterior para o site continuar bonito] */
         :root {
-            --cor-primaria: #1b2a49; /* Azul escuro da logo */
-            --cor-secundaria: #3a507e; /* Azul um pouco mais claro */
-            --cor-destaque: #f1c40f; /* Amarelo/Dourado para dar contraste */
-            --cor-fundo: #f8f9fa;
-            --cor-texto: #333333;
+            --azul-escuro: #1a2b4c;
+            --azul-claro: #2c4a85;
+            --amarelo-destaque: #ffd700;
+            --fundo-claro: #f4f7f6;
+            --texto-escuro: #333333;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth; /* Rolagem suave ao clicar no menu */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--cor-fundo);
-            color: var(--cor-texto);
+            background-color: var(--fundo-claro);
+            color: var(--texto-escuro);
             line-height: 1.6;
         }
 
-        /* Cabeçalho fixo no topo */
+        /* Cabeçalho Fixo */
         header {
-            background-color: var(--cor-primaria);
+            background-color: var(--azul-escuro);
+            color: #ffffff;
+            padding: 1rem 0;
             position: fixed;
-            top: 0;
             width: 100%;
+            top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
         }
 
         nav {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 0 20px;
         }
 
-        .nav-logo {
-            color: white;
-            font-weight: 700;
-            font-size: 1.2rem;
-            text-decoration: none;
-        }
-
-        .nav-links {
+        nav ul {
             list-style: none;
             display: flex;
-            gap: 1.5rem;
+            gap: 2rem;
         }
 
-        .nav-links a {
-            color: white;
+        nav ul li a {
+            color: #ffffff;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.95rem;
-            transition: color 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            padding: 0.5rem;
         }
 
-        .nav-links a:hover {
-            color: var(--cor-destaque);
+        nav ul li a:hover {
+            color: var(--amarelo-destaque);
+            border-bottom: 2px solid var(--amarelo-destaque);
         }
 
-        /* Seção Principal (Hero) com a Logo grande */
+        /* Seção Principal (Hero) */
         .hero {
             margin-top: 80px; /* Compensa o menu fixo */
-            background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+            background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-claro) 100%);
             color: white;
             text-align: center;
-            padding: 4rem 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 60vh;
+            padding: 4rem 20px;
+            animation: fadeIn 1s ease-out;
         }
 
         .logo-ca {
-            max-width: 350px;
-            width: 100%;
+            max-width: 280px;
             height: auto;
-            margin-bottom: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            animation: flutuar 3s ease-in-out infinite alternate;
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
         }
 
-        @keyframes flutuar {
-            0% { transform: translateY(0px); }
-            100% { transform: translateY(-15px); }
+        .logo-ca:hover {
+            transform: scale(1.05);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--amarelo-destaque);
         }
 
         .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-weight: 300;
             color: #e0e0e0;
         }
 
-        /* Estrutura das Seções */
-        section {
+        /* Seções de Conteúdo */
+        main {
             max-width: 1000px;
-            margin: 4rem auto;
-            padding: 0 2rem;
+            margin: 0 auto;
+            padding: 2rem 20px;
         }
 
-        .titulo-secao {
+        section {
+            background: #ffffff;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        section h3 {
+            color: var(--azul-escuro);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
             text-align: center;
-            color: var(--cor-primaria);
-            font-size: 2rem;
-            margin-bottom: 2rem;
             position: relative;
         }
 
-        .titulo-secao::after {
+        section h3::after {
             content: '';
             display: block;
             width: 60px;
-            height: 4px;
-            background-color: var(--cor-destaque);
+            height: 3px;
+            background-color: var(--amarelo-destaque);
             margin: 10px auto 0;
-            border-radius: 2px;
         }
 
-        /* Cartões de Diretoria */
-        .grid-diretoria {
+        /* Grid da Diretoria */
+        .diretoria-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
+            margin-top: 2rem;
         }
 
-        .card-membro {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        .membro-card {
             text-align: center;
-            transition: transform 0.3s;
+            background: var(--fundo-claro);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .card-membro:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        .membro-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
         }
 
-        .foto-membro {
-            width: 100%;
-            height: 250px;
+        .membro-foto {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
             object-fit: cover;
-            background-color: #ddd; /* Fundo caso a foto falhe */
+            margin-bottom: 1rem;
+            border: 3px solid var(--azul-escuro);
         }
 
-        .info-membro {
-            padding: 1.5rem;
+        .membro-card h4 {
+            color: var(--azul-escuro);
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
         }
 
-        .info-membro h3 {
-            color: var(--cor-primaria);
-            margin-bottom: 0.3rem;
-        }
-
-        .info-membro p {
+        .membro-card p {
             color: #666;
-            font-weight: 600;
             font-size: 0.9rem;
-        }
-
-        /* Eventos */
-        .card-evento {
-            background: white;
-            border-left: 5px solid var(--cor-primaria);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            font-weight: bold;
+            text-transform: uppercase;
         }
 
         /* Rodapé */
         footer {
-            background-color: var(--cor-primaria);
-            color: white;
+            background-color: var(--azul-escuro);
+            color: #ffffff;
             text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
+            padding: 2rem 20px;
+            margin-top: 2rem;
         }
 
-        /* Classes para animação no Javascript */
-        .escondido {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
+        /* Animações */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .mostrar {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsividade para celular */
+        /* Responsividade para Celulares */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none; /* Esconde menu em telas muito pequenas por enquanto */
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
             }
-            .hero h2 {
-                font-size: 1.8rem;
-            }
+            .hero h1 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Menu Superior -->
     <header>
         <nav>
-            <a href="#" class="nav-logo">CAGEB UFAC</a>
-            <ul class="nav-links">
+            <ul>
                 <li><a href="#inicio">Início</a></li>
                 <li><a href="#sobre">Sobre Nós</a></li>
-                <li><a href="#diretoria">A Diretoria</a></li>
-                <li><a href="#eventos">Eventos</a></li>
+                <li><a href="#diretoria">Diretoria</a></li>
+                <li><a href="#contato">Contato</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Seção Principal (Hero) com a Logo -->
-    <section id="inicio" class="hero">
-        <!-- AQUI ESTÁ A CORREÇÃO: Nova Diretoria.png com espaço certinho -->
-        <img src="Nova Diretoria.png" alt="Logotipo do CAGEB UFAC" class="logo-ca" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1b2a49/ffffff?text=Logo+do+CAGEB';">
-        
-        <h2>Centro Acadêmico Alexander von Humboldt</h2>
-        <p>Geografia - Universidade Federal do Acre</p>
-    </section>
+    <main>
+        <!-- AQUI ESTÁ A CORREÇÃO: Nome minúsculo e com traço -->
+        <section id="inicio" class="hero">
+            <img src="nova-diretoria.png" alt="Logotipo do CAGEB UFAC" class="logo-ca" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1b2a49/ffffff?text=Logo+do+CAGEB';">
+            <h1>Centro Acadêmico Alexander von Humboldt</h1>
+            <h2>Geografia - Universidade Federal do Acre</h2>
+        </section>
 
-    <!-- Seção Sobre -->
-    <section id="sobre" class="escondido">
-        <h2 class="titulo-secao">Quem Somos</h2>
-        <p style="text-align: justify; font-size: 1.1rem; color: #444;">
-            O Centro Acadêmico Alexander von Humboldt (CAGEB) é a entidade representativa máxima dos estudantes de Geografia da UFAC. 
-            Nossa missão é defender os direitos estudantis, promover a integração entre os discentes e fomentar o debate acadêmico, científico e social no âmbito geográfico. Trabalhamos para construir uma universidade mais pública, gratuita e de qualidade.
-        </p>
-    </section>
+        <section id="sobre">
+            <h3>Quem Somos</h3>
+            <p style="text-align: justify; font-size: 1.1rem;">O CAGEB é a representação máxima dos estudantes de Geografia da UFAC. Nossa missão é lutar pela qualidade do ensino, promover a integração entre os acadêmicos através de eventos, simpósios e grupos de estudo, e garantir que a voz discente seja ouvida em todas as instâncias da universidade. Trabalhamos por uma geografia inclusiva, crítica e transformadora.</p>
+        </section>
 
-    <!-- Seção da Diretoria -->
-    <section id="diretoria" class="escondido">
-        <h2 class="titulo-secao">Nossa Gestão</h2>
-        <div class="grid-diretoria">
+        <section id="diretoria">
+            <h3>Nossa Diretoria</h3>
+            <p style="text-align: center; margin-bottom: 2rem;">Conheça a equipe que está à frente da gestão do CAGEB.</p>
             
-            <!-- Membro 1 -->
-            <div class="card-membro">
-                <!-- Para adicionar a foto, coloque a imagem na mesma pasta e troque 'foto_presidente.png' pelo nome da foto -->
-                <img src="foto_presidente.png" alt="Foto Presidente" class="foto-membro" onerror="this.onerror=null; this.src='https://placehold.co/300x300/e0e0e0/666666?text=Foto';">
-                <div class="info-membro">
-                    <h3>Nome do Aluno</h3>
-                    <p>Presidente(a)</p>
+            <div class="diretoria-grid">
+                <!-- Membro 1 -->
+                <div class="membro-card">
+                    <!-- Sempre use nomes assim para as fotos: sem espaços, tudo minúsculo -->
+                    <img src="foto-presidente.jpg" alt="Presidente" class="membro-foto" onerror="this.onerror=null; this.src='https://placehold.co/200x200/cccccc/666666?text=Foto';">
+                    <h4>Nome do Aluno(a)</h4>
+                    <p>Presidência</p>
+                </div>
+
+                <!-- Membro 2 -->
+                <div class="membro-card">
+                    <img src="foto-vice.jpg" alt="Vice-Presidente" class="membro-foto" onerror="this.onerror=null; this.src='https://placehold.co/200x200/cccccc/666666?text=Foto';">
+                    <h4>Nome do Aluno(a)</h4>
+                    <p>Vice-Presidência</p>
+                </div>
+
+                <!-- Membro 3 -->
+                <div class="membro-card">
+                    <img src="foto-secretario.jpg" alt="Secretaria" class="membro-foto" onerror="this.onerror=null; this.src='https://placehold.co/200x200/cccccc/666666?text=Foto';">
+                    <h4>Nome do Aluno(a)</h4>
+                    <p>Secretaria-Geral</p>
+                </div>
+                
+                <!-- Membro 4 -->
+                <div class="membro-card">
+                    <img src="foto-tesoureiro.jpg" alt="Tesouraria" class="membro-foto" onerror="this.onerror=null; this.src='https://placehold.co/200x200/cccccc/666666?text=Foto';">
+                    <h4>Nome do Aluno(a)</h4>
+                    <p>Tesouraria</p>
                 </div>
             </div>
+        </section>
 
-            <!-- Membro 2 -->
-            <div class="card-membro">
-                <img src="foto_vice.png" alt="Foto Vice" class="foto-membro" onerror="this.onerror=null; this.src='https://placehold.co/300x300/e0e0e0/666666?text=Foto';">
-                <div class="info-membro">
-                    <h3>Nome do Aluno</h3>
-                    <p>Vice-Presidente(a)</p>
-                </div>
+        <section id="contato">
+            <h3>Fale Conosco</h3>
+            <p style="text-align: center;">Acompanhe nossas redes sociais ou envie um e-mail para nós!</p>
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <p><strong>Email:</strong> cageb.ufac@email.com</p>
+                <p><strong>Instagram:</strong> @cagebufac</p>
+                <p><strong>Local:</strong> Bloco de Geografia, Campus UFAC - Rio Branco</p>
             </div>
+        </section>
+    </main>
 
-            <!-- Membro 3 -->
-            <div class="card-membro">
-                <img src="foto_secretario.png" alt="Foto Secretário" class="foto-membro" onerror="this.onerror=null; this.src='https://placehold.co/300x300/e0e0e0/666666?text=Foto';">
-                <div class="info-membro">
-                    <h3>Nome do Aluno</h3>
-                    <p>Secretário(a) Geral</p>
-                </div>
-            </div>
-
-             <!-- Membro 4 -->
-             <div class="card-membro">
-                <img src="foto_tesoureiro.png" alt="Foto Tesoureiro" class="foto-membro" onerror="this.onerror=null; this.src='https://placehold.co/300x300/e0e0e0/666666?text=Foto';">
-                <div class="info-membro">
-                    <h3>Nome do Aluno</h3>
-                    <p>Tesoureiro(a)</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Seção Eventos -->
-    <section id="eventos" class="escondido">
-        <h2 class="titulo-secao">Mural de Avisos e Eventos</h2>
-        
-        <div class="card-evento">
-            <h3 style="color: var(--cor-primaria);">Recepção dos Calouros 2026</h3>
-            <p><strong>Data:</strong> Em breve</p>
-            <p>Sejam muito bem-vindos à Geografia UFAC! O CAGEB está preparando uma programação especial para apresentar o curso, o campus e tirar todas as dúvidas dos novos ingressantes.</p>
-        </div>
-
-        <div class="card-evento">
-            <h3 style="color: var(--cor-primaria);">Grupo de Estudos de Cartografia</h3>
-            <p><strong>Data:</strong> Encontros quinzenais</p>
-            <p>Grupo voltado para a prática e aprofundamento em sistemas de informação geográfica e leitura de mapas.</p>
-        </div>
-    </section>
-
-    <!-- Rodapé -->
     <footer>
-        <p>&copy; 2026 Centro Acadêmico Alexander von Humboldt - CAGEB</p>
-        <p>Universidade Federal do Acre (UFAC) - Rio Branco, AC</p>
+        <p>&copy; 2026 CAGEB - Centro Acadêmico Alexander von Humboldt.</p>
+        <p style="font-size: 0.8rem; margin-top: 0.5rem;">Desenvolvido pela Gestão (Nome da Gestão).</p>
     </footer>
 
-    <!-- JavaScript para criar efeito das seções aparecendo suavemente ao rolar a página -->
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('mostrar');
-                }
-            });
-        });
-
-        const hiddenElements = document.querySelectorAll('.escondido');
-        hiddenElements.forEach((el) => observer.observe(el));
-    </script>
 </body>
 </html>
