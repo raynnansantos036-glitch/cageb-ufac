@@ -3,50 +3,341 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAGEB - Centro Acadêmico Alexander von Humboldt</title>
-    <link rel="stylesheet" href="style.css">
+    <title>CAGEB - Centro Acadêmico de Geografia</title>
+    <!-- Importando fonte moderna do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --cor-primaria: #1b2a49; /* Azul escuro da logo */
+            --cor-secundaria: #3a507e; /* Azul um pouco mais claro */
+            --cor-destaque: #f1c40f; /* Amarelo/Dourado para dar contraste */
+            --cor-fundo: #f8f9fa;
+            --cor-texto: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth; /* Rolagem suave ao clicar no menu */
+        }
+
+        body {
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho fixo no topo */
+        header {
+            background-color: var(--cor-primaria);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .nav-logo {
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--cor-destaque);
+        }
+
+        /* Seção Principal (Hero) com a Logo grande */
+        .hero {
+            margin-top: 80px; /* Compensa o menu fixo */
+            background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+        }
+
+        .logo-ca {
+            max-width: 350px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            animation: flutuar 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes flutuar {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-15px); }
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #e0e0e0;
+        }
+
+        /* Estrutura das Seções */
+        section {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .titulo-secao {
+            text-align: center;
+            color: var(--cor-primaria);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .titulo-secao::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--cor-destaque);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Cartões de Diretoria */
+        .grid-diretoria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .card-membro {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .card-membro:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .foto-membro {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background-color: #ddd; /* Fundo caso a foto falhe */
+        }
+
+        .info-membro {
+            padding: 1.5rem;
+        }
+
+        .info-membro h3 {
+            color: var(--cor-primaria);
+            margin-bottom: 0.3rem;
+        }
+
+        .info-membro p {
+            color: #666;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Eventos */
+        .card-evento {
+            background: white;
+            border-left: 5px solid var(--cor-primaria);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--cor-primaria);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Classes para animação no Javascript */
+        .escondido {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .mostrar {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsividade para celular */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Esconde menu em telas muito pequenas por enquanto */
+            }
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
+    <!-- Menu Superior -->
     <header>
-        <div class="logo-container">
-            <img src="Nova_Diretoria.jpg" alt="Logotipo do CAGEB" class="logo">
-        </div>
-        <h1>Centro Acadêmico Alexander von Humboldt</h1>
-        <h2>Geografia - UFAC</h2>
         <nav>
-            <ul>
+            <a href="#" class="nav-logo">CAGEB UFAC</a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
                 <li><a href="#sobre">Sobre Nós</a></li>
-                <li><a href="#eventos">Eventos e Projetos</a></li>
-                <li><a href="#contato">Contato</a></li>
+                <li><a href="#diretoria">A Diretoria</a></li>
+                <li><a href="#eventos">Eventos</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <section id="sobre">
-            <h3>Sobre o CAGEB</h3>
-            <p>O Centro Acadêmico Alexander von Humboldt (CAGEB) é a entidade representativa dos estudantes de Geografia da Universidade Federal do Acre. Nosso objetivo é promover a integração discente, apoiar o desenvolvimento acadêmico em áreas como geoprocessamento, cartografia e climatologia, e defender os interesses dos estudantes.</p>
-        </section>
+    <!-- Seção Principal (Hero) com a Logo -->
+    <section id="inicio" class="hero">
+        <!-- AQUI ESTÁ A CORREÇÃO: Nova Diretoria.png com espaço certinho -->
+        <img src="Nova Diretoria.png" alt="Logotipo do CAGEB UFAC" class="logo-ca" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1b2a49/ffffff?text=Logo+do+CAGEB';">
+        
+        <h2>Centro Acadêmico Alexander von Humboldt</h2>
+        <p>Geografia - Universidade Federal do Acre</p>
+    </section>
 
-        <section id="eventos">
-            <h3>Eventos e Projetos em Destaque</h3>
-            <div class="evento-card">
-                <h4>Semana Acadêmica: Inclusão e Cidadania</h4>
-                <p><strong>Data:</strong> 16 a 19 de Junho de 2026</p>
-                <p>Junte-se a nós para debater as perspectivas geográficas contemporâneas, com foco na inclusão social e no exercício da cidadania no espaço urbano e rural.</p>
-            </div>
-            <div class="evento-card">
-                <h4>Grupo de Trabalho: Mapeamento Regional</h4>
-                <p>Discussões e práticas voltadas para a utilização de dados geoespaciais e monitoramento ambiental em nossa região.</p>
-            </div>
-        </section>
-    </main>
+    <!-- Seção Sobre -->
+    <section id="sobre" class="escondido">
+        <h2 class="titulo-secao">Quem Somos</h2>
+        <p style="text-align: justify; font-size: 1.1rem; color: #444;">
+            O Centro Acadêmico Alexander von Humboldt (CAGEB) é a entidade representativa máxima dos estudantes de Geografia da UFAC. 
+            Nossa missão é defender os direitos estudantis, promover a integração entre os discentes e fomentar o debate acadêmico, científico e social no âmbito geográfico. Trabalhamos para construir uma universidade mais pública, gratuita e de qualidade.
+        </p>
+    </section>
 
-    <footer id="contato">
-        <p>&copy; 2026 Centro Acadêmico Alexander von Humboldt - UFAC.</p>
-        <p>Rio Branco, Acre</p>
+    <!-- Seção da Diretoria -->
+    <section id="diretoria" class="escondido">
+        <h2 class="titulo-secao">Nossa Gestão</h2>
+        <div class="grid-diretoria">
+            
+            <!-- Membro 1 -->
+            <div class="card-membro">
+                <!-- Para adicionar a foto, coloque a imagem na mesma pasta e troque 'foto_presidente.png' pelo nome da foto -->
+                <img src="foto_presidente.png" alt="Foto Presidente" class="foto-membro" onerror="this.onerror=null; this.src='https://placehold.co/300x300/e0e0e0/666666?text=Foto';">
+                <div class="info-membro">
+                    <h3>Nome do Aluno</h3>
+                    <p>Presidente(a)</p>
+                </div>
+            </div>
+
+            <!-- Membro 2 -->
+            <div class="card-membro">
+                <img src="foto_vice.png" alt="Foto Vice" class="foto-membro" onerror="this.onerror=null; this.src='https://placehold.co/300x300/e0e0e0/666666?text=Foto';">
+                <div class="info-membro">
+                    <h3>Nome do Aluno</h3>
+                    <p>Vice-Presidente(a)</p>
+                </div>
+            </div>
+
+            <!-- Membro 3 -->
+            <div class="card-membro">
+                <img src="foto_secretario.png" alt="Foto Secretário" class="foto-membro" onerror="this.onerror=null; this.src='https://placehold.co/300x300/e0e0e0/666666?text=Foto';">
+                <div class="info-membro">
+                    <h3>Nome do Aluno</h3>
+                    <p>Secretário(a) Geral</p>
+                </div>
+            </div>
+
+             <!-- Membro 4 -->
+             <div class="card-membro">
+                <img src="foto_tesoureiro.png" alt="Foto Tesoureiro" class="foto-membro" onerror="this.onerror=null; this.src='https://placehold.co/300x300/e0e0e0/666666?text=Foto';">
+                <div class="info-membro">
+                    <h3>Nome do Aluno</h3>
+                    <p>Tesoureiro(a)</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Seção Eventos -->
+    <section id="eventos" class="escondido">
+        <h2 class="titulo-secao">Mural de Avisos e Eventos</h2>
+        
+        <div class="card-evento">
+            <h3 style="color: var(--cor-primaria);">Recepção dos Calouros 2026</h3>
+            <p><strong>Data:</strong> Em breve</p>
+            <p>Sejam muito bem-vindos à Geografia UFAC! O CAGEB está preparando uma programação especial para apresentar o curso, o campus e tirar todas as dúvidas dos novos ingressantes.</p>
+        </div>
+
+        <div class="card-evento">
+            <h3 style="color: var(--cor-primaria);">Grupo de Estudos de Cartografia</h3>
+            <p><strong>Data:</strong> Encontros quinzenais</p>
+            <p>Grupo voltado para a prática e aprofundamento em sistemas de informação geográfica e leitura de mapas.</p>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 Centro Acadêmico Alexander von Humboldt - CAGEB</p>
+        <p>Universidade Federal do Acre (UFAC) - Rio Branco, AC</p>
     </footer>
 
+    <!-- JavaScript para criar efeito das seções aparecendo suavemente ao rolar a página -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('mostrar');
+                }
+            });
+        });
+
+        const hiddenElements = document.querySelectorAll('.escondido');
+        hiddenElements.forEach((el) => observer.observe(el));
+    </script>
 </body>
 </html>
